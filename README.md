@@ -23,5 +23,5 @@ This project is focused on analyzing website traffic to gain valuable insights i
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/website-traffic-analysis.git
+   https://github.com/moni-4ALL/monisha/edit/main/README.md
 
