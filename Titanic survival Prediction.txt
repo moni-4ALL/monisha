@@ -1,0 +1,27 @@
+import pandas as pd
+
+# Assuming you have a dataset or you can download it from a source like Kaggle
+# Replace 'path/to/titanic_dataset.csv' with the actual path to your Titanic dataset
+titanic_data = pd.read_csv('/content/titanic.csv')
+
+# Display the first few rows of the dataset to understand its structure
+print(titanic_data.head())
+
+# Perform preprocessing steps
+
+# Drop columns that are not relevant for prediction
+titanic_data = titanic_data.drop(['PassengerId', 'Name', 'Ticket', 'Cabin'], axis=1)
+
+# Handle missing values, for example, fill missing age values with the mean
+titanic_data['Age'].fillna(titanic_data['Age'].mean(), inplace=True)
+
+# Convert categorical features to numerical using one-hot encoding
+titanic_data = pd.get_dummies(titanic_data, columns=['Sex', 'Embarked'], drop_first=True)
+
+# Assuming 'Survived' is the target variable, you can drop it to create the dataset for prediction
+# If 'Survived' is not present, you may need to obtain or generate the target variable based on your task
+if 'Survived' in titanic_data.columns:
+    titanic_data = titanic_data.drop('Survived', axis=1)
+
+# Save the prepared dataset for survival prediction
+titanic_data.to_csv('titanic_survival_prediction_dataset.csv', index=False)
